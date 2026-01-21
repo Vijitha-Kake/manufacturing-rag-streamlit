@@ -111,8 +111,60 @@ with st.sidebar:
     temperature = st.slider("Temperature", min_value=0.0, max_value=1.0, value=0.0, step=0.05)
     show_context = st.checkbox("Show retrieved context blocks", value=True)
 
-default_q = "Welding misalignment defects are increasing. What are common causes and what maintenance actions should we take?"
-question = st.text_area("Question", value=default_q, height=110)
+#default_q = "Welding misalignment defects are increasing. What are common causes and what maintenance actions should we take?"
+
+import streamlit as st
+
+# --- Categorized sample questions (keep yours) ---
+SAMPLE_QUESTIONS = {
+    "Welding / Quality": [
+        "Why are welding misalignment defects increasing?",
+        "What are common indicators and root causes of welding misalignment?",
+        "How can we reduce panel gap and flush issues in body assembly?"
+    ],
+    "Maintenance / Equipment": [
+        "What maintenance actions reduce alignment drift over time?",
+        "What happens if we skip calibration or delay preventive maintenance?",
+        "Which robot or fixture issues most often lead to quality defects?"
+    ],
+    "Supplier / Materials": [
+        "How do supplier batch variations contribute to defects?",
+        "What material tolerance issues commonly cause misalignment?",
+        "What controls can reduce variability from incoming panels?"
+    ],
+}
+
+# Optional default question (keep if you want a starter prompt)
+DEFAULT_Q = (
+    "Welding misalignment defects are increasing. "
+    "What are common causes and what maintenance actions should we take?"
+)
+
+# Keep one state variable for the active question
+if "question" not in st.session_state:
+    st.session_state.question = DEFAULT_Q
+
+st.markdown("### Try a sample question (optional)")
+
+# 1) Category dropdown
+categories = ["— Select a category —"] + list(SAMPLE_QUESTIONS.keys())
+selected_cat = st.selectbox("Category", categories, index=0)
+
+# 2) Question dropdown (depends on category)
+if selected_cat != categories[0]:
+    qs = ["— Select a sample question —"] + SAMPLE_QUESTIONS[selected_cat]
+    selected_q = st.selectbox("Sample question", qs, index=0)
+
+    # Copy chosen sample into the main input box
+    if selected_q != qs[0]:
+        st.session_state.question = selected_q
+else:
+    st.selectbox("Sample question", ["Select a category first"], index=0, disabled=True)
+
+# 3) Free-form question input (editable)
+question = st.text_area("Or ask your own question", key="question", height=110)
+
+#question = st.text_area("Question", value=default_q, height=110)
 
 col1, col2 = st.columns([1, 1])
 run_btn = col1.button("Run RAG", type="primary")
