@@ -1,5 +1,3 @@
-﻿# manufacturing-rag-streamlit
-
 # Manufacturing RAG System – Streamlit App
 
 ## Overview
@@ -10,6 +8,9 @@ to analyze manufacturing defects and root causes using unstructured documents.
 AWS S3 (optional) → LangChain Ingestion & Chunking  
 → FAISS Vector Store → OpenAI Embeddings  
 → Streamlit UI
+
+<img width="528" height="792" alt="image" src="https://github.com/user-attachments/assets/30732965-b95d-4cfa-a9b3-fcc644afc608" />
+
 
 ## Features
 - PDF ingestion & chunking
@@ -25,5 +26,6 @@ Python, LangChain, FAISS, OpenAI API, Streamlit, AWS (S3, EC2 – optional)
 ```bash
 pip install -r requirements.txt
 streamlit run app.py
+
 
 
