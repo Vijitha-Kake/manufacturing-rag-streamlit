@@ -9,7 +9,7 @@ from langchain_core.runnables import RunnableParallel, RunnablePassthrough, Runn
 from langchain_core.output_parsers import StrOutputParser
 
 # ---------- App Config ----------
-st.set_page_config(page_title="Toyota Camry Welding RAG", layout="wide")
+st.set_page_config(page_title="Decision Intelligence Platform for Manufacturing Defect Analysis (RAG)", layout="wide")
 
 load_dotenv()
 
@@ -99,7 +99,10 @@ def build_rag_chain(db, top_k: int, model_name: str, temperature: float):
     return chain, rag_chain  # chain returns doc_scores too; rag_chain returns final answer
 
 # ---------- UI ----------
-st.title("Toyota Camry Body Welding — RAG Assistant (FAISS + LangChain)")
+st.title("Decision Intelligence Platform for Manufacturing Defect Analysis (RAG)")
+
+st.caption("LLM-powered root cause analysis using structured and unstructured manufacturing documents")
+
 
 with st.sidebar:
     st.header("Settings")

@@ -8,10 +8,8 @@ venv/
 .env/
 
 # Vector stores & artifacts
-vector_store/
 artifacts/
-*.faiss
-*.pkl
+
 
 # OS
 .DS_Store
