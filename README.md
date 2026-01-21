@@ -22,6 +22,10 @@ AWS S3 (optional) → LangChain Ingestion & Chunking
 ## Tech Stack
 Python, LangChain, FAISS, OpenAI API, Streamlit, AWS (S3, EC2 – optional)
 
+## 🚀 Live Demo
+https://manufacturing-rag-streamlit.streamlit.app
+
+
 ## How to Run Locally
 ```bash
 pip install -r requirements.txt
