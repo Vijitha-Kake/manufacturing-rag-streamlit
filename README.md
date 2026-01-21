@@ -1,4 +1,4 @@
-# Manufacturing RAG System – Streamlit App
+# Decision Intelligence Platform for Manufacturing Defect Analysis (RAG)
 
 ## Overview
 This project implements an end-to-end Retrieval-Augmented Generation (RAG) system
@@ -26,6 +26,7 @@ Python, LangChain, FAISS, OpenAI API, Streamlit, AWS (S3, EC2 – optional)
 ```bash
 pip install -r requirements.txt
 streamlit run app.py
+
 
 
 
